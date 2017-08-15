@@ -16,8 +16,8 @@ Benchmark result
 
 | test scenario | String | KMP | KMP - precompiled | Aho-Corasick |
 | :---         |  ---: | ---: | ---: | ---: |
-| short text | *`78,763.767/ms` | `19,118.220/ms` | `29,489.667/ms` | `7824.821/ms` |
-| long text | *`4,093.381/ms` | `329.124/ms` | `426.696/ms` | `197.690/ms` |
+| short text | `*78,763.767/ms` | `19,118.220/ms` | `29,489.667/ms` | `7824.821/ms` |
+| long text | `*4,093.381/ms` | `329.124/ms` | `426.696/ms` | `197.690/ms` |
 
 ## Run the project
 
