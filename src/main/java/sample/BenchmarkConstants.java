@@ -1,6 +1,7 @@
 package sample;
 
 import net.amygdalum.stringsearchalgorithms.search.chars.Horspool;
+import net.amygdalum.stringsearchalgorithms.search.chars.ShiftOr;
 import org.ahocorasick.trie.Trie;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
@@ -25,6 +26,9 @@ public interface BenchmarkConstants {
 
     Horspool HORSPOOL_SHORT = new Horspool(TGT);
     Horspool HORSPOOL_LONG = new Horspool(TGT_LONG);
+
+    ShiftOr SHIFT_OR = new ShiftOr(TGT);
+    ShiftOr SHIFT_OR_LONG = new ShiftOr(TGT_LONG);
 
     @State(Scope.Benchmark)
     class BenchmarkState {

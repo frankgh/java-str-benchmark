@@ -21,6 +21,7 @@ Benchmark result
 | KMP - precompiled | `29,489.667/ms` | `426.696/ms` |
 | Aho-Corasick | `7824.821/ms` | `197.690/ms` |
 | Horspool | `20,589.804/ms` | `2,281.852/ms` |
+| ShiftOr | `18718.990/ms` | `765.880/ms` |
 
 ## Run the project
 
@@ -52,6 +53,16 @@ java -jar target/benchmarks.jar  HorspoolBenchmark -wi 3 -i 6 -f 1 -tu ms
 Benchmark                        Mode  Cnt      Score     Error   Units
 HorspoolBenchmark.horspool      thrpt    6  20589.804 ± 187.774  ops/ms
 HorspoolBenchmark.horspoolLong  thrpt    6   2281.852 ±  35.489  ops/ms
+```
+
+```
+java -jar target/benchmarks.jar  ShiftOrBenchmark -wi 3 -i 6 -f 1 -tu ms
+```
+
+```
+Benchmark                      Mode  Cnt      Score     Error   Units
+ShiftOrBenchmark.shiftOr      thrpt    6  18718.990 ± 397.213  ops/ms
+ShiftOrBenchmark.shiftOrLong  thrpt    6    765.880 ±  10.747  ops/ms
 ```
 
 ## References
