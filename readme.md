@@ -27,9 +27,13 @@ Benchmark result
 
 ## Run the project
 
+build the package
+
 ```
 mvn clean package
 ```
+
+run benchmarks
 
 ```
 java -jar target/benchmarks.jar  StringSearchBenchmark -wi 3 -i 6 -f 1 -tu ms
