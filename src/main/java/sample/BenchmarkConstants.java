@@ -1,5 +1,6 @@
 package sample;
 
+import net.amygdalum.stringsearchalgorithms.search.chars.BOM;
 import net.amygdalum.stringsearchalgorithms.search.chars.Horspool;
 import net.amygdalum.stringsearchalgorithms.search.chars.ShiftOr;
 import org.ahocorasick.trie.Trie;
@@ -29,6 +30,9 @@ public interface BenchmarkConstants {
 
     ShiftOr SHIFT_OR = new ShiftOr(TGT);
     ShiftOr SHIFT_OR_LONG = new ShiftOr(TGT_LONG);
+
+    BOM BOM_SHORT = new BOM(TGT);
+    BOM BOM_LONG = new BOM(TGT_LONG);
 
     @State(Scope.Benchmark)
     class BenchmarkState {

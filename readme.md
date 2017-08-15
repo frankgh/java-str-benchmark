@@ -22,6 +22,7 @@ Benchmark result
 | Aho-Corasick | `7824.821/ms` | `197.690/ms` |
 | Horspool | `20,589.804/ms` | `2,281.852/ms` |
 | ShiftOr | `18718.990/ms` | `765.880/ms` |
+| BOM | `10772.581/ms` | `1270.413/ms`
 
 ## Run the project
 
@@ -63,6 +64,16 @@ java -jar target/benchmarks.jar  ShiftOrBenchmark -wi 3 -i 6 -f 1 -tu ms
 Benchmark                      Mode  Cnt      Score     Error   Units
 ShiftOrBenchmark.shiftOr      thrpt    6  18718.990 ± 397.213  ops/ms
 ShiftOrBenchmark.shiftOrLong  thrpt    6    765.880 ±  10.747  ops/ms
+```
+
+```shell
+java -jar target/benchmarks.jar  BOMBenchmark -wi 3 -i 6 -f 1 -tu ms
+```
+
+```
+Benchmark              Mode  Cnt      Score    Error   Units
+BOMBenchmark.bom      thrpt    6  10772.581 ± 92.371  ops/ms
+BOMBenchmark.bomLong  thrpt    6   1270.413 ± 27.856  ops/ms
 ```
 
 ## References
