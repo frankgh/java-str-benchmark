@@ -27,33 +27,14 @@ package sample;
 
 import org.apache.commons.lang.StringUtils;
 import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
-import org.osgl.util.IO;
 import org.osgl.util.S;
 
 //https://stackoverflow.com/questions/16228992/commons-lang-stringutils-replace-performance-vs-string-replace
-public class StringReplaceBenchmark {
-
-    public static final String TGT_NO_MATCH = "XYZ";
-    public static final String TGT = "AA";
-    public static final String REPLACEMENT = "B";
-    public static final String TEXT = "AAAAAAAAAABBB";
-
-    public static final String TGT_NO_MATCH_LONG = "aaaxyz0001";
-    public static final String TGT_LONG = "occurrence";
-    public static final String REP_LONG = "appearance";
-    public static final String TEXT_LONG = IO.readContentAsString(StringReplaceBenchmark.class.getResource("/long_str.txt"));
-
-    @State(Scope.Thread)
-    public static class BenchmarkState {
-        volatile private String str = TEXT;
-        volatile private String strLong = TEXT_LONG;
-    }
+public class StringReplaceBenchmark implements BenchmarkConstants {
 
     @Benchmark
     public Object testString(BenchmarkState state) {
