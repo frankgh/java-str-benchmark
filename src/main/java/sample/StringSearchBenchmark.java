@@ -21,6 +21,11 @@ public class StringSearchBenchmark implements BenchmarkConstants{
     }
 
     @Benchmark
+    public Object ahoCorasick(BenchmarkState state) {
+        return state.trie.firstMatch(state.str);
+    }
+
+    @Benchmark
     public Object kmpLong(BenchmarkState state) {
         return new KMP(TGT_LONG).search(state.strLong);
     }
@@ -35,6 +40,11 @@ public class StringSearchBenchmark implements BenchmarkConstants{
         return state.strLong.indexOf(TGT_LONG);
     }
 
+    @Benchmark
+    public Object ahoCorasickLong(BenchmarkState state) {
+        return state.trieLong.firstMatch(state.strLong);
+    }
+
     public static void main(String[] args) throws RunnerException {
         BenchmarkState state = new BenchmarkState();
         StringSearchBenchmark bk = new StringSearchBenchmark();
@@ -44,6 +54,8 @@ public class StringSearchBenchmark implements BenchmarkConstants{
         System.out.println(bk.kmpPrecompiledLong(state));
         System.out.println(bk.string(state));
         System.out.println(bk.stringLong(state));
+        System.out.println(bk.ahoCorasick(state));
+        System.out.println(bk.ahoCorasickLong(state));
 //        Options opt = new OptionsBuilder().include(StringSearchBenchmark.class.getSimpleName()).warmupIterations(5)
 //                .measurementIterations(5).forks(1).build();
 //        new Runner(opt).run();

@@ -5,6 +5,7 @@ This project benchmark String match performance with separate common implementat
 * String - JDK String replacement
 * KMP - [a KMP implementation](https://gist.github.com/shoenig/1430733/250b4184dc4a2dd31aa136e2fbdded5f90489a64)
 * KMP precompiled - use precompiled KMP instance for searching 
+* Aho-Corasick - [A Aho-Corasick implementation](https://github.com/robert-bor/aho-corasick)
 
 The project measures String matching in several use cases:
 
@@ -13,10 +14,10 @@ The project measures String matching in several use cases:
 
 Benchmark result
 
-| test scenario | String | KMP | KMP - precompiled |
-| :---         |  ---: | ---: | ---: |
-| short text | `78,763.767/ms` | `19,118.220/ms` | `29,489.667/ms` |
-| long text | `4,093.381/ms` | `329.124/ms` | `426.696/ms` |
+| test scenario | String | KMP | KMP - precompiled | Aho-Corasick |
+| :---         |  ---: | ---: | ---: | ---: |
+| short text | *`78,763.767/ms` | `19,118.220/ms` | `29,489.667/ms` | `7824.821/ms` |
+| long text | *`4,093.381/ms` | `329.124/ms` | `426.696/ms` | `197.690/ms` |
 
 ## Run the project
 
@@ -30,6 +31,8 @@ java -jar target/benchmarks.jar  StringSearchBenchmark -wi 3 -i 6 -f 1 -tu ms
 
 ```
 Benchmark                                  Mode  Cnt      Score      Error   Units
+StringSearchBenchmark.ahoCorasick         thrpt    6   7824.821 ±  180.215  ops/ms
+StringSearchBenchmark.ahoCorasickLong     thrpt    6    197.690 ±   11.022  ops/ms
 StringSearchBenchmark.kmp                 thrpt    6  19118.220 ± 1425.688  ops/ms
 StringSearchBenchmark.kmpLong             thrpt    6    329.124 ±   12.258  ops/ms
 StringSearchBenchmark.kmpPrecompiled      thrpt    6  29489.667 ± 9573.152  ops/ms
