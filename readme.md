@@ -40,3 +40,11 @@ StringSearchBenchmark.kmpPrecompiledLong  thrpt    6    426.696 ±   12.585  ops
 StringSearchBenchmark.string              thrpt    6  78763.767 ± 1797.206  ops/ms
 StringSearchBenchmark.stringLong          thrpt    6   4093.381 ±  194.671  ops/ms
 ```
+
+## References
+
+* http://openjdk.java.net/projects/code-tools/jmh
+* http://java-performance.info/jmh/
+* http://java-performance.info/introduction-jmh-profilers/
+* http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/
+* https://github.com/greenlaw110/Benchmark4StringReplace/blob/master/src/main/java/sample/StringReplaceBenchmark.java
