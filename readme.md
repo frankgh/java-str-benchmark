@@ -14,10 +14,13 @@ The project measures String matching in several use cases:
 
 Benchmark result
 
-| test scenario | String | KMP | KMP - precompiled | Aho-Corasick |
-| :---         |  ---: | ---: | ---: | ---: |
-| short text | `*78,763.767/ms` | `19,118.220/ms` | `29,489.667/ms` | `7824.821/ms` |
-| long text | `*4,093.381/ms` | `329.124/ms` | `426.696/ms` | `197.690/ms` |
+| test scenario | short text | long text |
+| :---         |  ---: | ---: |
+| String | `*78,763.767/ms` | `*4,093.381/ms` | 
+| KMP | `19,118.220/ms` | `329.124/ms` | 
+| KMP - precompiled | `29,489.667/ms` | `426.696/ms` |
+| Aho-Corasick | `7824.821/ms` | `197.690/ms` |
+| Horspool | `20,589.804/ms` | `2,281.852/ms` |
 
 ## Run the project
 
@@ -39,6 +42,16 @@ StringSearchBenchmark.kmpPrecompiled      thrpt    6  29489.667 ± 9573.152  ops
 StringSearchBenchmark.kmpPrecompiledLong  thrpt    6    426.696 ±   12.585  ops/ms
 StringSearchBenchmark.string              thrpt    6  78763.767 ± 1797.206  ops/ms
 StringSearchBenchmark.stringLong          thrpt    6   4093.381 ±  194.671  ops/ms
+```
+
+```
+java -jar target/benchmarks.jar  HorspoolBenchmark -wi 3 -i 6 -f 1 -tu ms
+```
+
+```
+Benchmark                        Mode  Cnt      Score     Error   Units
+HorspoolBenchmark.horspool      thrpt    6  20589.804 ± 187.774  ops/ms
+HorspoolBenchmark.horspoolLong  thrpt    6   2281.852 ±  35.489  ops/ms
 ```
 
 ## References
