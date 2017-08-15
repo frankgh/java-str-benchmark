@@ -18,3 +18,22 @@ Benchmark result
 | short text | 78,763.767/ms | 19,118.220/ms | 29,489.667/ms |
 | long text | 4,093.381/ms | 329.124/ms | 426.696/ms |
 
+## Run the project
+
+```
+mvn clean package
+```
+
+```
+java -jar target/benchmarks.jar  StringSearchBenchmark -wi 3 -i 6 -f 1 -tu ms
+```
+
+```
+Benchmark                                  Mode  Cnt      Score      Error   Units
+StringSearchBenchmark.kmp                 thrpt    6  19118.220 ± 1425.688  ops/ms
+StringSearchBenchmark.kmpLong             thrpt    6    329.124 ±   12.258  ops/ms
+StringSearchBenchmark.kmpPrecompiled      thrpt    6  29489.667 ± 9573.152  ops/ms
+StringSearchBenchmark.kmpPrecompiledLong  thrpt    6    426.696 ±   12.585  ops/ms
+StringSearchBenchmark.string              thrpt    6  78763.767 ± 1797.206  ops/ms
+StringSearchBenchmark.stringLong          thrpt    6   4093.381 ±  194.671  ops/ms
+```
