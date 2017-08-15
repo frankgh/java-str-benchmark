@@ -1,5 +1,6 @@
 package sample;
 
+import net.amygdalum.stringsearchalgorithms.search.chars.BNDM;
 import net.amygdalum.stringsearchalgorithms.search.chars.BOM;
 import net.amygdalum.stringsearchalgorithms.search.chars.Horspool;
 import net.amygdalum.stringsearchalgorithms.search.chars.ShiftOr;
@@ -33,6 +34,9 @@ public interface BenchmarkConstants {
 
     BOM BOM_SHORT = new BOM(TGT);
     BOM BOM_LONG = new BOM(TGT_LONG);
+
+    BNDM BNDM_SHORT = new BNDM(TGT);
+    BNDM BNDM_LONG = new BNDM(TGT_LONG);
 
     @State(Scope.Benchmark)
     class BenchmarkState {

@@ -22,7 +22,8 @@ Benchmark result
 | Aho-Corasick | `7824.821/ms` | `197.690/ms` |
 | Horspool | `20,589.804/ms` | `2,281.852/ms` |
 | ShiftOr | `18718.990/ms` | `765.880/ms` |
-| BOM | `10772.581/ms` | `1270.413/ms`
+| BOM | `10772.581/ms` | `1270.413/ms` |
+| BNDM | `15127.376/ms` | `1794.447/ms` |
 
 ## Run the project
 
@@ -74,6 +75,15 @@ java -jar target/benchmarks.jar  BOMBenchmark -wi 3 -i 6 -f 1 -tu ms
 Benchmark              Mode  Cnt      Score    Error   Units
 BOMBenchmark.bom      thrpt    6  10772.581 ± 92.371  ops/ms
 BOMBenchmark.bomLong  thrpt    6   1270.413 ± 27.856  ops/ms
+```
+
+```shell
+java -jar target/benchmarks.jar  BNDMBenchmark -wi 3 -i 6 -f 1 -tu ms
+```
+
+```shell
+BNDMBenchmark.bndm      thrpt    6  15127.376 ± 571.995  ops/ms
+BNDMBenchmark.bndmLong  thrpt    6   1794.447 ±  48.193  ops/ms
 ```
 
 ## References
