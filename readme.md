@@ -17,21 +17,21 @@ The project measures String replacement in several use cases:
 
 Benchmark result
 
-| measure item | String | StringUtils | Lang3StringUtils | OSGL  | Fast  |
-| :---         |   ---: |        ---: |             ---: |  ---: |  ---: |
-| short text | 2647.313/ms | 8399.156/ms | 7092.984/ms | 8584.325/ms | **9558.353/ms** |
-| long text | 73.793/ms | 155.973/ms | 152.580/ms | **223.589/ms** | 149.660/ms |
-| short text no match | 7113.214/ms | 102227.568/ms | 87770.331/ms | **103388.380/ms** | 99851.409/ms |
-| long text no match | 260.422/ms | 358.311/ms | 353.155/ms | **505.472/ms** | 328.562/ms |
+| measure item        | String       | StringUtils   | Lang3StringUtils | OSGL              | Fast         | Mine             |
+| :---                |   ---:       |        ---:   |             ---: |  ---:             |  ---:        |  ---:            |
+| short text          | 1629.901/ms  | 4108.814/ms   | 4220.031/ms      | 5311.738/ms       | 4029.617/ms  | **14745.697/ms** |
+| long text           | 24.740/ms    | 104.787/ms    | 51.248/ms        | **192.047/ms**    | 107.174/ms   | 105.316/ms       |
+| short text no match | 4223.545/ms  | 101864.076/ms | 88097.749/ms     | **104791.505/ms** | 92812.264/ms | 97769.296/ms     |
+| long text no match  | 258.721/ms   | 309.870/ms    | 247.953/ms       | 501.517/ms        | 283.630/ms   | **702.203/ms**   |
 
 Benchmark GC count
 
-| measure item | String | StringUtils | Lang3StringUtils | OSGL  | Fast  |
-| :---         |   ---: |        ---: |             ---: |  ---: |  ---: |
-| short text | 15 | 13 | 10 | 10 | 19 |
-| long text | 41 | 46 | 48 | **21** | 32 |
-| short text no match | 9 | 0 | 0 | 0 | 0 |
-| long text no match | 33 | 0 | 0 | 0 | 0 |
+| measure item        | String | StringUtils | Lang3StringUtils | OSGL  | Fast  | Mine   |
+| :---                |   ---: |        ---: |             ---: |  ---: |  ---: |  ---:  |
+| short text          | 24     | 37          | 21               | 9     | 18    | 16     |
+| long text           | 19     | 104         | 106              | 28    | 65    | **36** |
+| short text no match | 37     | 0           | 0                | 0     | 0     | 0      |
+| long text no match  | 42     | 0           | 0                | 0     | 0     | 0      |
 
 ## Run the project
 
