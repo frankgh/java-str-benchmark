@@ -39,14 +39,16 @@ import org.osgl.util.S;
 //https://stackoverflow.com/questions/16228992/commons-lang-stringutils-replace-performance-vs-string-replace
 public class StringReplaceBenchmark {
 
+    private static final char CSV_QUOTE = '"';
+
     public static final String TGT_NO_MATCH = "XYZ";
-    public static final String TGT = "AA";
-    public static final String REPLACEMENT = "B";
-    public static final String TEXT = "AAAAAAAAAABBB";
+    public static final String TGT = "\"";
+    public static final String REPLACEMENT = "\"\"";
+    public static final String TEXT = "\"\"\"\"\"\"\"\"\"\"BBB";
 
     public static final String TGT_NO_MATCH_LONG = "aaaxyz0001";
-    public static final String TGT_LONG = "occurrence";
-    public static final String REP_LONG = "appearance";
+    public static final String TGT_LONG = "\"";
+    public static final String REP_LONG = "\"\"";
     public static final String TEXT_LONG = IO.readContentAsString(StringReplaceBenchmark.class.getResource("/long_str.txt"));
 
     @State(Scope.Thread)
@@ -81,6 +83,11 @@ public class StringReplaceBenchmark {
     }
 
     @Benchmark
+    public Object testMine(BenchmarkState state) {
+        return toCsvText(state.str, false, false, CSV_QUOTE, CSV_QUOTE);
+    }
+
+    @Benchmark
     public Object testStringNoMatch(BenchmarkState state) {
         return state.str.replace(TGT_NO_MATCH, REPLACEMENT);
     }
@@ -103,6 +110,11 @@ public class StringReplaceBenchmark {
     @Benchmark
     public Object testFastNoMatch(BenchmarkState state) {
         return replace(state.str, TGT_NO_MATCH, REPLACEMENT);
+    }
+
+    @Benchmark
+    public Object testMineNoMatch(BenchmarkState state) {
+        return toCsvText(state.str, false, false, '|', '|');
     }
 
     @Benchmark
@@ -130,6 +142,10 @@ public class StringReplaceBenchmark {
         return replace(state.strLong, TGT_LONG, REP_LONG);
     }
 
+    @Benchmark
+    public Object testMineLong(BenchmarkState state) {
+        return toCsvText(state.strLong, false, false, CSV_QUOTE, CSV_QUOTE);
+    }
 
     @Benchmark
     public Object testStringLongNoMatch(BenchmarkState state) {
@@ -154,6 +170,36 @@ public class StringReplaceBenchmark {
     @Benchmark
     public Object testFastLongNoMatch(BenchmarkState state) {
         return replace(state.strLong, TGT_NO_MATCH_LONG, REPLACEMENT);
+    }
+
+    @Benchmark
+    public Object testMineLongNoMatch(BenchmarkState state) {
+        return toCsvText(state.strLong, false, false, '|', '|');
+    }
+
+    private String toCsvText(String s, boolean firstLine, boolean lastLine, char os, char ns) {
+        if (s == null) return null;
+
+        final int length = s.length();
+        int i, quotes = 0, pos = 0, total = length;
+
+        // count all the quotes
+        for (i = 0; i < length; i++) {
+            if (s.charAt(i) == os) quotes++;
+        }
+
+        total += quotes;
+
+        if (length == total) return s;
+
+        char[] chars = new char[total];
+
+        for (i = 0; i < length; i++) {
+            if (quotes > 0 && s.charAt(i) == os) chars[pos++] = ns;
+            chars[pos++] = s.charAt(i);
+        }
+
+        return new String(chars);
     }
 
     public static String replace(String source, String os, String ns) {
